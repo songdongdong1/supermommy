@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Gd_Skuprice::helloworld" title="Hello World" module="Gd_Skuprice" sortOrder="51" resource="Gd_Skuprice::helloworld"/>
+        <add id="Gd_Skuprice::post" title="Manage Posts" module="Gd_Skuprice" sortOrder="10" action="Gd_Skuprice/post" resource="Gd_Skuprice::post" parent="Gd_Skuprice::helloworld"/>
+        <add id="Gd_Skuprice::hello_configuration" title="Configuration" module="Gd_Skuprice" sortOrder="99" parent="Gd_Skuprice::helloworld" action="adminhtml/system_config/edit/section/helloworld" resource="Gd_Skuprice::helloworld_configuration"/>
+    </menu>
+</config>

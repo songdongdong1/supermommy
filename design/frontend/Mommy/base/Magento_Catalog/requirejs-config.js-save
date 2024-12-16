@@ -1,0 +1,11 @@
+var config = {
+    config: {
+        mixins: {
+            			
+			'Magento_Catalog/js/price-options': {
+				'Magento_Catalog/js/price-options-mixin': true
+				}
+			}     
+			
+    }
+}

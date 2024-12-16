@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+
+
+<?php
+$_product = $block->getProduct(); 
+$_productId = $_product->getId();
+$_associatedProducts = $_product->getTypeInstance()->getAssociatedProducts($_product);
+        
+//xdebug_var_dump($_associatedProducts);
+$images = $block->getGalleryImages()->getItems();
+$mainImage = current(array_filter($images, function ($img) use ($block) {
+    return $block->isMainImage($img);
+}));
+
+if (!empty($images) && empty($mainImage)) {
+    $mainImage = $block->getGalleryImages()->getFirstItem();
+}
+
+
+$helper = $block->getData('imageHelper');
+$mainImageData = $mainImage ?
+    $mainImage->getData('medium_image_url') :
+    $helper->getDefaultPlaceholderUrl('image');
+	$_imgs =[];
+	$i = 0;
+	foreach($images as $image)
+	{
+		if($i == 0 || $i >2)
+		{
+			$i++;
+			continue;
+		}
+		$_imgs[$i]=$image->getData('url');
+		$i++;
+	}
+	
+
+?>
+
+<div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
+	<?php foreach($_imgs as $_img): ?>
+	<div class="gd_gallery_image" style="display:inline-block; width:49%;">
+		<img
+			alt=""
+			class="gallery-placeholder__image"
+			src="<?= /* @noEscape */ $_img?>"
+		/>
+	</div>
+	<?php endforeach;?>
+</div>

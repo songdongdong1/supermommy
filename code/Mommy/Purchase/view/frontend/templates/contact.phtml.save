@@ -1,0 +1,49 @@
+<div class="gd_footer" >
+	<div class="gd_footer_title">
+	 Contact information
+	</div>
+	<div class="gd_contact_info">  
+		Tel: <?=$block->getPhoneNumber();?>
+	</div>
+	<div class="gd_contact_info">  
+		Email: cs@gardendecorsdepot.com
+		
+	</div>
+	<div class ="gd_office">
+		<div class="gd_office_title">  
+		Corporate/Billing office
+		</div>
+		<div class="gd_contact_info">  
+			Open hours：Mon-Fri 8:00 to 16:30
+		</div>
+		<div class="gd_contact_info">  
+		4010 Georgia Blvd,San Bernardino, CA 92407
+	</div>	
+	<div class ="gd_office">
+		</div>
+		<div class="gd_office_title">  
+			Distribution Center
+		</div>
+		<div class="gd_contact_info">  
+			Open hours：Mon-Fri 8:30 to 17:00
+		</div>
+		<div class="gd_contact_info">  
+			6511 N Wayside Dr, Houston, TX, 77028 
+		
+		</div>
+	</div>
+	<div class ="gd_office">
+		<div class="gd_office_title">  
+		Distribution Center
+		</div>
+		<div class="gd_contact_info">  
+			Open hours：Mon-Fri 8:00 to 16:30
+		</div>
+		<div class="gd_contact_info">  
+		550 River Rd, Rio Vista, CA 94571
+		
+		</div>
+	</div>
+
+
+</div>

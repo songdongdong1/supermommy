@@ -1,0 +1,74 @@
+<?php
+        /**
+         * test Hello CustomPrice Observer
+         *
+         * @category    test
+         * @package     test_Hello
+         * @author      test 
+         *
+         */
+		 
+        namespace Gd\Skuprice\Observer;
+
+        use Magento\Framework\Event\ObserverInterface;
+        use Magento\Framework\App\RequestInterface;
+
+        class CustomPrice implements ObserverInterface
+        {
+            public function execute(\Magento\Framework\Event\Observer $observer) {
+
+			//$reqeustParams = $this->_request->getParams();
+			//$customproducttype = $reqeustParams['custom_product_type'];
+			$customproducttype = "123";
+			\Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info('mytest');
+			
+			///test items
+			$items = $observer->getEvent()->getData('quote_items');
+			if (is_null($items)>0)
+			{
+				$testprice =21;
+			}
+			else
+				$testprice =100;
+			
+				
+			//test items end
+			$item = $observer->getEvent()->getData('quote_item');         
+            $item = ( $item->getParentItem() ? $item->getParentItem() : $item );
+            $price = $testprice; //set your price here
+            $item->setCustomPrice($price);
+            $item->setOriginalCustomPrice($price);
+			/*test options*/
+		    $options = $item->getProduct()->getTypeInstance(true)->getOrderOptions($item->getProduct());
+			$customOptions = $options['options'];
+			if (!empty($customOptions)) {
+				foreach ($customOptions as $option) {
+					$optionTitle = $option['label'];
+					$optionId = $option['option_id'];
+					$optionType = $option['option_type'];
+					$optionValue = $option['option_value'];
+					\Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info($optionTitle);
+					\Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info($optionValue);
+				}
+			}
+			$sku = $item->getSku();
+			\Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info("sku");
+			\Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info($sku);
+			$item->setSku("TEST!@#$%^");
+			$sku = $item->getSku();
+			\Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info("sku2");
+			\Magento\Framework\App\ObjectManager::getInstance()->get('Psr\Log\LoggerInterface')->info($sku);
+            $item->getProduct()->setIsSuperMode(true);
+			
+			//print_r($item);
+			if($customproducttype == "custom_product_type"){
+                $item = $observer->getEvent()->getData('quote_item');         
+                $item = ( $item->getParentItem() ? $item->getParentItem() : $item );
+                $price = 100; //set your price here
+                $item->setCustomPrice($price);
+                $item->setOriginalCustomPrice($price);
+                $item->getProduct()->setIsSuperMode(true);
+            }
+
+        }
+}

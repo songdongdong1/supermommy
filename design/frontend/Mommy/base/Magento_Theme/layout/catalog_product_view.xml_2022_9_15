@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    
+    <body>
+		<move element="product.info.media" destination="content" before="product.info.main" />
+	   	<referenceContainer name="product.info">
+             <referenceBlock name="product.info.price" remove="true"/>
+		</referenceContainer>
+		<referenceContainer name="product.info.social">
+			<referenceBlock name="view.addto.compare" remove="true" />
+			<referenceBlock name="view.addto.wishlist" remove="true" />
+		</referenceContainer>
+	  
+	  
+		<referenceBlock name="product.info.description" remove="true" />
+		
+		<referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.review.form" remove="true" />
+        <referenceBlock name="product.info.review" remove="true"	/>
+	    <referenceBlock name="page.main.title" remove="true"	/>
+		<referenceContainer name="product.info.social" remove="true" />
+		<referenceBlock name="product.info.options.wrapper" remove="true"/>
+    </body>
+</page>

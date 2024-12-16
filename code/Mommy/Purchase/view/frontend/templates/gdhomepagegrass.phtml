@@ -1,0 +1,124 @@
+<?php
+
+$ids = [8,];
+
+
+
+
+
+//$productCollection = $block->getCategyCollectionByParentIds($ids);
+//$productCollection = $block->getProductCollectionByCategories($catgoryCollection);
+
+
+
+
+
+
+
+?>
+
+
+
+<div class="gd_homepage_bundle_wrapper"> 
+
+	<div class ="gd_homepage_bundle_title">   Shopping Artificial Turf Product
+
+	</div>
+
+<?php
+
+
+	
+
+     $loop_count = 0;
+
+	 
+
+	 $categoryids = $ids;
+
+	
+
+	 $productCollection = $block->getProductCollectionByCategories($categoryids);
+
+	 ?>
+
+
+     <?php foreach($productCollection as $productItem){ ?>
+
+		
+
+	 <?php if ($loop_count%3 == 0): ?>
+
+	    <div class="gd_homepage_bundle_categories">
+
+	 <?php endif; ?> 
+
+	        <div  class="gd_homepage_bundle_category">
+
+			<a class="gd_homepage_bundle_category_link" href = "<?php echo $productItem->getProductUrl();?>"> 
+
+				<?php //xdebug_var_dump($productItem); break;?>
+
+				<div class="gd_homepage_bundle_category_cat">
+
+				<?php 
+
+					
+
+					//xdebug_var_dump($category->getDescription());
+
+					//break;
+
+					$loop_count++;
+
+				?>
+
+					<img class ="gd_homepage_bundle_category_image" src="<?php echo $block->getProductImgUrl($productItem);?>" alt ="" >
+
+				</div>
+
+				<div class="gd_homepage_bundle_category_description"><?php echo $productItem->getName();?> 
+
+				</div>
+				<div  class="gd_homepage_bundle_category_description gd_text_center"> As low as $<?php echo $productItem->getData("unitprice");?> /Sq. ft. 
+				</div>
+
+			</a>
+
+				<div class="gd_homepage_shop_text">
+
+				<a href= "<?php echo $productItem->getProductUrl();?>">
+
+				
+
+				<div class="gd_shop_text" id="gd_home_show_now" style="display:inline-block;"> <p>Shop Now</p>
+
+				</div> 
+
+				</a>
+
+				</div>
+
+			
+
+			</div>
+
+	<?php if ($loop_count%3 == 0): ?>
+
+	       </div>
+
+	<?php endif; ?>
+
+	<?php } ?>
+
+	<?php if ($loop_count%3 != 0): ?>
+
+		</div>
+
+	<?php endif; ?>
+
+
+
+	
+
+</div>

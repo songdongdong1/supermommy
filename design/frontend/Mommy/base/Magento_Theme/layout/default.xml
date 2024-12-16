@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="header.panel">
+            <block class="Gd\Skuprice\Block\Gdhomepage\Gdnotification"  name="header.notification">
+                
+            </block>
+		</referenceContainer>
+        <referenceContainer name="sidebar.additional">
+             <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        </referenceContainer>
+		<referenceContainer name="footer">
+			<block class="Gd\Skuprice\Block\Gdhomepage\Gdlegal"  name="gdlegal">
+                
+            </block>
+		</referenceContainer>
+		<referenceContainer name="footer">
+			<block class="Gd\Skuprice\Block\Gdhomepage\Gdcontact"  name="gdcontact">
+                
+            </block>
+		</referenceContainer>
+		<move element="footer_links" destination="gdlegal" before="-"/>
+    </body>
+</page>
